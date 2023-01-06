@@ -41,7 +41,7 @@
 .d-flex
 {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-around; */
   background-color: #61dafb;
 margin: 0px;
 padding: 5px;

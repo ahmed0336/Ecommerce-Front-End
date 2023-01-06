@@ -1,8 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useNavigate } from 'react-router-dom';
 
 const  Signup = ()  => {
+
+  const Navigate = useNavigate()
+
+  
  
     const [FormField,setFormField]=useState({
         name:"",
@@ -31,6 +36,8 @@ const  Signup = ()  => {
             .then(data => {
 
                  localStorage.setItem('user',JSON.stringify(data))
+
+            
         // fetchProducts()
 
        
