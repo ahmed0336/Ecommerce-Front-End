@@ -10,6 +10,11 @@ const Login = () => {
 
     const Navigate =useNavigate()
 
+    // const tokenjwt = localStorage.getItem('Token')  
+    const tokenjwt = JSON.parse(localStorage.getItem('Token'))
+
+    console.log("t1",tokenjwt)
+
     useEffect(()=>{
    
       const Token = localStorage.getItem('user')  
@@ -36,6 +41,10 @@ const Login = () => {
     
 
     // fetch api promise return krta hai
+    let myHeaders = new Headers();
+
+//     myHeaders.append("ahmed", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzYjdmMTg2ZTM3YWE4MDM1MzRhOWY1YyIsIm5hbWUiOiJzYWZkYXIiLCJlbWFpbCI6InNhZmRhckBnbWFpbC5jb20iLCJfX3YiOjB9LCJpYXQiOjE2NzMyNjYzMjcsImV4cCI6MTY3MzI3MzUyN30.TS1voEaXihmviBqa1_0yzc0zv0sQQwjNi21nN_AJOnw");
+myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
         "email": Email,
@@ -44,22 +53,26 @@ const Login = () => {
       
       var requestOptions = {
         method: 'POST',
-        headers: {
-                    'Content-Type': 'application/json'
-                },
+        headers:myHeaders,
+        // headers:{
+        //   ahmed:tokenjwt
+        // },
+        
         body: raw,
         redirect: 'follow'
       };
+
 
       fetch("http://127.0.0.1:5000/login", requestOptions)
   .then(response => response.json())
   .then(result =>{
 
     // if()
-    console.log(result.name)
-    if(result.name){
+    console.log(result.auth)
+    if(result.auth){
 
-        localStorage.setItem("user",JSON.stringify(result) )
+        localStorage.setItem("user",JSON.stringify(result.user) )
+        localStorage.setItem("Token",JSON.stringify(result.auth) )
         
         // toast.success(result.name, {
             toast.success("Login Sucessfully", {

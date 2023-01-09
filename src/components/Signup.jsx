@@ -35,7 +35,8 @@ const  Signup = ()  => {
         }).then(res => res.json())
             .then(data => {
 
-                 localStorage.setItem('user',JSON.stringify(data))
+                 localStorage.setItem('user',JSON.stringify(data.result))
+                 localStorage.setItem('Token',JSON.stringify(data.auth))
 
             
         // fetchProducts()

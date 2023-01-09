@@ -54,6 +54,8 @@ const ProductList = () => {
 
   const Navigate = useNavigate()
 
+  const Token = localStorage.getItem('Token')
+
   useEffect(() => {
     GeProductList()
 
@@ -63,7 +65,11 @@ const ProductList = () => {
 
     var requestOptions = {
       method: 'GET',
-      redirect: 'follow'
+      redirect: 'follow',
+    //   headers: {
+    //     ahmed: Token,
+
+    // },
     };
 
     fetch("http://localhost:5000/products", requestOptions)

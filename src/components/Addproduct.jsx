@@ -13,6 +13,7 @@ const Addproduct = () => {
     const [Error, setError] = useState('')
 
     const userId = JSON.parse(localStorage.getItem('user'))
+    const Token = JSON.parse(localStorage.getItem('Token'))
     console.log("userId==>", userId._id)
 
     const AddProductFun = () => {
@@ -31,7 +32,8 @@ const Addproduct = () => {
         }
 
         var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+        // myHeaders.append("ahmed", );
+        // myHeaders.append("Content-Type", "application/json");
 
         var raw = JSON.stringify({
             "name": Name,
@@ -43,7 +45,10 @@ const Addproduct = () => {
 
         var requestOptions = {
             method: 'POST',
-            headers: myHeaders,
+            headers: {
+                "Content-Type": "application/json",
+                ahmed: Token
+            },
             body: raw,
             redirect: 'follow'
         };
