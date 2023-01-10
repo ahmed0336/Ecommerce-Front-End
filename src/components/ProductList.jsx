@@ -54,7 +54,9 @@ const ProductList = () => {
 
   const Navigate = useNavigate()
 
-  const Token = localStorage.getItem('Token')
+  // const Token = localStorage.getItem('Token')
+  const Token = JSON.parse(localStorage.getItem('Token'))
+  console.log("token",Token)
 
   useEffect(() => {
     GeProductList()
@@ -63,13 +65,18 @@ const ProductList = () => {
 
   const GeProductList = () => {
 
+    // let myHeaders = new Headers();
+
+    // myHeaders.append("ahmed", Token);
+
+
     var requestOptions = {
       method: 'GET',
       redirect: 'follow',
-    //   headers: {
-    //     ahmed: Token,
-
-    // },
+      // headers: myHeaders,
+      headers: {
+        ahmed: Token,
+    },
     };
 
     fetch("http://localhost:5000/products", requestOptions)
@@ -89,6 +96,9 @@ const ProductList = () => {
 
     var requestOptions = {
       method: 'DELETE',
+      headers: {
+        ahmed: Token,
+    },
       redirect: 'follow'
     };
 

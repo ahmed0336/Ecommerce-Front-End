@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Card from 'react-bootstrap/Card';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 const UpdateProduct = () => {
 
@@ -13,7 +13,9 @@ const UpdateProduct = () => {
 
     //    let location =  useLocation()
     let { ProductId } = useParams()
+    const Navigate =  useNavigate()
     console.log("useparamms", ProductId)
+    const Token = JSON.parse(localStorage.getItem('Token'))
 
     //    console.log("location==>",location)
 
@@ -25,6 +27,9 @@ const UpdateProduct = () => {
 
         var requestOptions = {
             method: 'GET',
+            headers: {
+                ahmed: Token,
+            },
             redirect: 'follow'
         };
 
@@ -52,6 +57,7 @@ const UpdateProduct = () => {
 
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("ahmed", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzYjdmMTg2ZTM3YWE4MDM1MzRhOWY1YyIsIm5hbWUiOiJzYWZkYXIiLCJlbWFpbCI6InNhZmRhckBnbWFpbC5jb20iLCJfX3YiOjB9LCJpYXQiOjE2NzMzMzgyOTQsImV4cCI6MTY3MzM0NTQ5NH0.Ku-dbe93coodsNbcG8HtiYiXvLnod9prshuh1SFOjOs");
 
         var raw = JSON.stringify({
             "name": Name,
@@ -63,13 +69,27 @@ const UpdateProduct = () => {
         var requestOptions = {
             method: 'PUT',
             headers: myHeaders,
+            // headers: {
+            //     ahmed: Token,
+            // },
             body: raw,
             redirect: 'follow'
         };
 
         fetch(`http://localhost:5000/product/${ProductId}`, requestOptions)
             .then(response => response.json())
-            .then(result => console.log("my result",result))
+            .then(result =>
+                {
+                    if(result)
+                    {
+                        Navigate('/')
+                    }
+
+
+                    // console.log("my result",result)
+                }
+                 
+                 )
             .catch(error => console.log('error', error));
 
     }

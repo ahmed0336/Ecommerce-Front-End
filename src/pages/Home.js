@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
     <Nav />
-    <h1>Home</h1>
+    {/* <h1>Home</h1> */}
     <ProductList />
     {/* <Signup /> */}
     </>

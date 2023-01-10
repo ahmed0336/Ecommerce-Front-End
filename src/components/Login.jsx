@@ -112,10 +112,10 @@ myHeaders.append("Content-Type", "application/json");
     return (
         <>
         <ToastContainer />
-            <h1>login</h1>
+            {/* <h1>login</h1> */}
 
             <Card >
-                <Card.Header>Featured</Card.Header>
+                <Card.Header>Login</Card.Header>
                 <Card.Body variant="flush">
                   <input type="email" className='form-control mt-4' placeholder='Enter Email' onChange={(e)=>setEmail(e.target.value)}  />
                   <input type="password" className='form-control mt-4' placeholder='Enter Password' onChange={(e)=>setPassword(e.target.value)}  />

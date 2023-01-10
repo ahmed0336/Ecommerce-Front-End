@@ -88,10 +88,10 @@ const  Signup = ()  => {
 
 
   return (
-    <Form  >
+    <Form autoComplete="new-password"  >
           <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Name</Form.Label>
-        <Form.Control type="text" placeholder="Enter Name" value={FormField.name}  onChange={(event) => updateForm(event, 'name')}  />
+        <Form.Control type="text" placeholder="Enter Name" autoComplete="new-password" value={FormField.name}  onChange={(event) => updateForm(event, 'name')}  />
         <Form.Text className="text-muted">
           Enter Your Full Name
         </Form.Text>
@@ -99,7 +99,7 @@ const  Signup = ()  => {
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" value={FormField.email}  onChange={(event) => updateForm(event, 'email')}  />
+        <Form.Control type="email" placeholder="Enter email" autoComplete="new-password"  value={FormField.email}  onChange={(event) => updateForm(event, 'email')}  />
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         </Form.Text>
@@ -107,7 +107,7 @@ const  Signup = ()  => {
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password"  value={FormField.password} onChange={(event) => updateForm(event, 'password')} />
+        <Form.Control type="password" placeholder="Password"  autoComplete="new-password"  value={FormField.password} onChange={(event) => updateForm(event, 'password')} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
